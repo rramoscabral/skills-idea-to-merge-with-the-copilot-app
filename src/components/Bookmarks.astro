@@ -129,6 +129,12 @@
    * Load bookmarks from storage on page load.
    */
   function loadStoredBookmarks() {
+    if (typeof localStorage === 'undefined') {
+      bookmarks = [];
+      renderBookmarks();
+      return;
+    }
+
     bookmarks = loadBookmarks();
     renderBookmarks();
   }
